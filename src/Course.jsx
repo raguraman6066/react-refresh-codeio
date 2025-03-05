@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 export const Course = (props) => {
+  let [purchased, setPurchased] = useState(false);
+
   function BuyCourse(discount, event) {
+    setPurchased(true);
     console.log(props.name, "purchased with discount", discount, event);
   }
-
   return (
     <div className="card">
       <img src={props.image} alt="" />
@@ -17,6 +19,7 @@ export const Course = (props) => {
       >
         Buy Now
       </button>
+      <p>{purchased ? "Already purchased" : "Buy Now"}</p>
     </div>
   );
 };
