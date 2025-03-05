@@ -22,7 +22,7 @@ export const CourseList = () => {
 
   const vfmcourses = courses.filter((e) => e.price > 200);
 
-  const courseList = vfmcourses.map((e, index) => (
+  const courseList = courses.map((e, index) => (
     <Course
       key={index}
       name={e.name}
