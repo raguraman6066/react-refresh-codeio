@@ -1,0 +1,15 @@
+{
+    "courses":[
+        { "id": 1, "name": "html course", "price": 122, "rating": 5, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1452px-CSS3_logo_and_wordmark.svg.png" },
+        {
+          "id": 2,
+          "name": "css course",
+          "price": 150,
+          "rating": 4,
+          "image":
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpXaDo9xQfNOh-0nAtgdMzekEMdTbESQoFhQ&s"
+        },
+        { "id": 4, "name": "bootstrap course", "price": 500, "rating": 4, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/768px-JavaScript-logo.png" },
+        { "id": 3, "name": "js course", "price": 200, "rating": 5, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1452px-CSS3_logo_and_wordmark.svg.png" }
+      ]
+}
