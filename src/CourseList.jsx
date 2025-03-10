@@ -1,32 +1,8 @@
 import React, { useEffect, useState } from "react";
-import HTML from "./assets/download.png";
 import { Course } from "./Course";
+import useFetch from "./useFetch";
 export const CourseList = () => {
-  const [courses, updateCourse] = useState([]);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    setTimeout(
-      () =>
-        fetch("http://localhost:3000/courses")
-          .then((response) => {
-            if (!response.ok) {
-              throw Error("Could't retrieve data");
-            }
-            console.log(response);
-            return response.json();
-          })
-          .then((data) => {
-            console.log(data);
-            updateCourse(data);
-          })
-          .catch((error) => {
-            console.log(error.message);
-            setError(error.message);
-          }),
-      3000
-    );
-  }, []);
+  const [courses, error] = useFetch("http://localhost:3000/courses");
 
   function deleteItem(id) {
     let updatedList = courses.filter((e) => e.id != id);
