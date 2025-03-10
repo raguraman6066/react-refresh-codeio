@@ -3,25 +3,48 @@ import HTML from "./assets/download.png";
 import { Course } from "./Course";
 export const CourseList = () => {
   const [courses, updateCourse] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    console.log("use effect called");
-    fetch("http://localhost:3000/courses")
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-        updateCourse(data);
-      });
+    setTimeout(
+      () =>
+        fetch("http://localhost:3000/courses")
+          .then((response) => {
+            if (!response.ok) {
+              throw Error("Could't retrieve data");
+            }
+            console.log(response);
+            return response.json();
+          })
+          .then((data) => {
+            console.log(data);
+            updateCourse(data);
+          })
+          .catch((error) => {
+            console.log(error.message);
+            setError(error.message);
+          }),
+      3000
+    );
   }, []);
 
   function deleteItem(id) {
     let updatedList = courses.filter((e) => e.id != id);
     updateCourse(updatedList);
   }
-  if (!courses) {
-    return <></>;
+  if (!courses || courses.length == 0) {
+    return (
+      <>
+        {!error && (
+          <img
+            src="https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca.gif"
+            width={200}
+            alt=""
+          />
+        )}
+        {error && <p>{error}</p>}
+      </>
+    );
   }
   // const vfmcourses = courses.filter((e) => e.price > 200);
   // courses.sort((a, b) => {
